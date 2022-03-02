@@ -1,7 +1,24 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import service from "../utils/service";
 
 class Home extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.getListGenders()
+    }
+
+    getListGenders = () => {
+            fetch(service.commons.gender())
+                .then((result) => {
+                    return result.json();
+                })
+                .then( (data) => {
+                    console.log(data);
+                });
+    }
+
 
     render() {
         return (
@@ -13,6 +30,8 @@ class Home extends React.Component {
                 <nav>
                     <Link to="/about">About</Link>
                 </nav>
+
+
             </>
         );
     }
