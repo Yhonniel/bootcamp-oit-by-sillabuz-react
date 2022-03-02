@@ -12,7 +12,7 @@ const commons = {
         return baseurl + '/common/genders'
     },
     documenttype() {
-        return baseurl + '/common/genders'
+        return baseurl + '/common/document-types'
     }
 }
 
