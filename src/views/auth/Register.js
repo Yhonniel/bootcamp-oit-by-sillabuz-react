@@ -28,23 +28,32 @@ export default function Register() {
                 "Accept": "application/json",
             },
         }).then((result) => {
-            return result.json();
-        })
-            .then((result) => {
-                console.log(result);
-                if (result.token) {
+            console.log("Response")
+            if (result.status <= 299 && result.status >= 200) {
+                result.json().then(result => {
                     localStorage.setItem(keystore.token, result.token);
                     window.location.replace("/profile");
-                } else {
-                    const element = (
-                        <div>
-                            La contraseña debe contener 8 caracteres, al menos un número y una
-                            mayuscula
-                        </div>
-                    );
-                    ReactDOM.render(element, document.getElementById("error"));
-                }
-            });
+                })
+            } else {
+                result.json().then(result => {
+                    // print errors
+                    console.log(result)
+                })
+                const element = (
+                    <div className="alert alert-danger" role="alert">
+                        Por favor validar los datos ingresados!
+                    </div>
+                );
+                ReactDOM.render(element, document.getElementById("error"));
+            }
+        }).catch(error => {
+            const element = (
+                <div className="alert alert-danger" role="alert">
+                    Por favor validar los datos ingresados!
+                </div>
+            );
+            ReactDOM.render(element, document.getElementById("error"));
+        })
     }
 
 
