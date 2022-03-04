@@ -1,6 +1,7 @@
-const keystore = {
+const app = "SILLABUZ_FRONT"
 
-    token : 'TOKEN'
+const keystore = {
+    token: app + '_TOKEN'
 }
 
 export default keystore

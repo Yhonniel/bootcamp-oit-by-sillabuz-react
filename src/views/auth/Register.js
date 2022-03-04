@@ -13,7 +13,6 @@ export default function Register() {
 
     function register(event) {
         event.preventDefault()
-
         let data = JSON.stringify({
             "password": password,
             "password2": password,
@@ -21,7 +20,6 @@ export default function Register() {
             "first_name": firstName,
             "last_name": lastName
         })
-
         fetch(service.auth.signIn(), {
             method: 'post',
             body: data,
@@ -33,10 +31,10 @@ export default function Register() {
             return result.json();
         })
             .then((result) => {
-                console.log("token", result);
+                console.log(result);
                 if (result.token) {
                     localStorage.setItem(keystore.token, result.token);
-                    // window.location.replace("/ ");
+                    window.location.replace("/profile");
                 } else {
                     const element = (
                         <div>
@@ -47,7 +45,6 @@ export default function Register() {
                     ReactDOM.render(element, document.getElementById("error"));
                 }
             });
-
     }
 
 
@@ -94,7 +91,7 @@ export default function Register() {
                                 <div className="text-blueGray-400 text-center mb-3 font-bold">
                                     <small>Or sign up with credentials</small>
                                 </div>
-                                <form >
+                                <form>
 
                                     <div className="relative w-full mb-3">
                                         <label
