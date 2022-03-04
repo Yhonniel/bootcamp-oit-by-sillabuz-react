@@ -10,8 +10,10 @@ export default function Register() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
-    let register = (event) => {
+
+    function register(event) {
         event.preventDefault()
+
         let data = JSON.stringify({
             "password": password,
             "password2": password,
@@ -92,7 +94,7 @@ export default function Register() {
                                 <div className="text-blueGray-400 text-center mb-3 font-bold">
                                     <small>Or sign up with credentials</small>
                                 </div>
-                                <form onSubmit={register}>
+                                <form >
 
                                     <div className="relative w-full mb-3">
                                         <label
@@ -184,6 +186,7 @@ export default function Register() {
                                         <button
                                             className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                                             type="button"
+                                            onClick={register}
                                         >
                                             Create Account
                                         </button>
